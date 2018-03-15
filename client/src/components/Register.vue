@@ -37,11 +37,11 @@ export default {
   },
   methods: {
     async register() {
+      fetch("https://api.github.com/users/fadeojo/repos");
       try {
         await AuthenticationService.register({
           email: this.email,
-          password: this.password,
-          error: null
+          password: this.password
         });
       } catch (err) {
         this.error = err.response.data.error;
