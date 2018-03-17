@@ -5,22 +5,24 @@
                 Tab Tracker
             </span>
         </v-toolbar-title>
-        <!-- IMPLEMENT ME -->
-        <!-- <v-toolbar-items>
-            <v-btn flat dark>
+        <v-toolbar-items>
+            <v-btn flat dark @click="navigateTo({name:'songs'})">
                 Browse
             </v-btn>
-        </v-toolbar-items>   -->
+        </v-toolbar-items>
 
         <v-spacer></v-spacer>
 
         <v-toolbar-items>
-            <v-btn flat dark @click="navigateTo({name: 'login'})">
+            <v-btn v-if="!$store.state.isUserLoggedIn" flat dark @click="navigateTo({name: 'login'})">
                 Login
             </v-btn>
-            <v-btn flat dark @click="navigateTo({name: 'register'})">
+            <v-btn v-if="!$store.state.isUserLoggedIn" flat dark @click="navigateTo({name: 'register'})">
                 Sign Up
-            </v-btn> 
+            </v-btn>
+            <v-btn v-if="$store.state.isUserLoggedIn" flat dark @click="logOut">
+                Sign Out
+            </v-btn>  
         </v-toolbar-items> 
     </v-toolbar>
 </template>
@@ -30,6 +32,11 @@ export default {
   methods: {
     navigateTo(route) {
       this.$router.push(route);
+    },
+    logOut() {
+      this.$store.dispatch("setToken", null);
+      this.$store.dispatch("setUser", null);
+      this.$router.push({ name: "root" });
     }
   }
 };

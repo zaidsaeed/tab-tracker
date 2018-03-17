@@ -3,6 +3,7 @@ import Router from "vue-router";
 import HelloWorld from "@/components/HelloWorld";
 import Register from "@/components/Register";
 import LogIn from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/LogIn";
+import Songs from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/Songs.vue";
 
 Vue.use(Router);
 
@@ -22,6 +23,11 @@ export default new Router({
       path: "/login",
       name: "login",
       component: LogIn
+    },
+    {
+      path: "/songs",
+      name: "songs",
+      component: Songs
     }
   ]
 });
