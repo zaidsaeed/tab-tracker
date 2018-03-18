@@ -4,6 +4,8 @@ import HelloWorld from "@/components/HelloWorld";
 import Register from "@/components/Register";
 import LogIn from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/LogIn";
 import Songs from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/Songs.vue";
+import CreateSong from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/CreateSong.vue";
+import ViewSong from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/ViewSong.vue";
 
 Vue.use(Router);
 
@@ -28,6 +30,16 @@ export default new Router({
       path: "/songs",
       name: "songs",
       component: Songs
+    },
+    {
+      path: "/songs/create",
+      name: "songs-create",
+      component: CreateSong
+    },
+    {
+      path: "/songs/:songId",
+      name: "song",
+      component: ViewSong
     }
   ]
 });
