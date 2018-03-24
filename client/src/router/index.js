@@ -5,7 +5,8 @@ import Register from "@/components/Register";
 import LogIn from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/LogIn";
 import Songs from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/Songs.vue";
 import CreateSong from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/CreateSong.vue";
-import ViewSong from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/ViewSong.vue";
+import Index from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/ViewSong/Index.vue";
+import EditSong from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/EditSong.vue";
 
 Vue.use(Router);
 
@@ -39,7 +40,12 @@ export default new Router({
     {
       path: "/songs/:songId",
       name: "song",
-      component: ViewSong
+      component: Index
+    },
+    {
+      path: "/songs/:songId/edit",
+      name: "song-edit",
+      component: EditSong
     }
   ]
 });
