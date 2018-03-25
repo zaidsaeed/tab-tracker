@@ -25,7 +25,6 @@
 
 <script>
 import SongsService from "/Users/zaidsaeed/Desktop/tab-tracker/server/src/services/SongsService.js";
-import Panel from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/Panel.vue";
 import SongMetadata from "./SongMetadata.vue";
 import YouTube from "./YouTube.vue";
 import Lyrics from "./Lyrics.vue";
@@ -41,7 +40,6 @@ export default {
     this.song = (await SongsService.show(songId)).data;
   },
   components: {
-    Panel,
     SongMetadata,
     YouTube,
     Lyrics,

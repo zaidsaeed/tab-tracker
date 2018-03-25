@@ -14,11 +14,9 @@
 
 <script>
 import VueYouTubeEmbed from "vue-youtube-embed";
-import Panel from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/Panel.vue";
 export default {
   props: ["youtubeId"],
   components: {
-    Panel,
     VueYouTubeEmbed
   }
 };

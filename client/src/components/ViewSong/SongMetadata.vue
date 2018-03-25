@@ -14,7 +14,7 @@
                     {{song.album}}
                 </div>
 
-                <v-btn dark class="cyan" @click="navigateTo({name:'song-edit', params:{songId:song.id}})"> Edit</v-btn>
+                <v-btn dark class="cyan" :to="{name:'song-edit', params:{songId:song.id}}"> Edit</v-btn>
             </v-flex>
 
             <v-flex xs6>
@@ -27,17 +27,8 @@
 </template>
 
 <script>
-import Panel from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/Panel.vue";
 export default {
-  props: ["song"],
-  components: {
-    Panel
-  },
-  methods: {
-    navigateTo(route) {
-      this.$router.push(route);
-    }
-  }
+  props: ["song"]
 };
 </script>
 

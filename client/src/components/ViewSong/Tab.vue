@@ -10,12 +10,8 @@
 </template>
 
 <script>
-import Panel from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/Panel.vue";
 export default {
-  props: ["song"],
-  components: {
-    Panel
-  }
+  props: ["song"]
 };
 </script>
 

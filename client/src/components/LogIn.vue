@@ -13,7 +13,7 @@
                         v-model="password"
                     ></v-text-field>
                     <br>
-                    <div class="error" v-html="error"/>
+                    <div class="danger-alert" v-html="error"/>
                     <br>
                     <v-btn class="cyan" dark @click="login">Login</v-btn>
             </panel>
@@ -23,7 +23,6 @@
 
 <script>
 import AuthenticationService from "/Users/zaidsaeed/Desktop/tab-tracker/server/src/services/AuthenticationService.js";
-import Panel from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/Panel.vue";
 export default {
   data() {
     return {
@@ -41,20 +40,16 @@ export default {
         });
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUser", response.data.user);
+        this.$router.push({ name: "songs" });
       } catch (err) {
         this.error = err.response.data.error;
       }
     }
-  },
-  components: {
-    Panel
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.error {
-  color: red;
-}
+
 </style>

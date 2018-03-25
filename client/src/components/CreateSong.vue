@@ -76,7 +76,6 @@
 </template>
 
 <script>
-import Panel from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/Panel.vue";
 import SongService from "/Users/zaidsaeed/Desktop/tab-tracker/server/src/services/SongsService.js";
 
 export default {
@@ -112,9 +111,6 @@ export default {
         console.log(err);
       }
     }
-  },
-  components: {
-    Panel
   }
 };
 </script>
