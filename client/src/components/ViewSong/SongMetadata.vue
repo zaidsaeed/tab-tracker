@@ -58,19 +58,6 @@ export default {
       }
     }
   },
-  async mounted() {
-    if (!this.isUserLoggedIn) {
-      return;
-    }
-    try {
-      this.bookmark = (await BookmarksServices.index({
-        songId: this.song.id,
-        userId: this.$store.state.user.id
-      })).data;
-    } catch (err) {
-      console.log(err);
-    }
-  },
   methods: {
     async setAsBookmark() {
       try {
