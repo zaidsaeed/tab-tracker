@@ -14,7 +14,11 @@
                     {{song.album}}
                 </div>
 
-                <v-btn dark class="cyan" :to="{name:'song-edit', params:{songId:song.id}}"> Edit</v-btn>
+                <v-btn dark class="cyan" :to="{name:'song-edit', params:{songId:song.id}}">Edit</v-btn>
+
+                <v-btn v-if="isUserLoggedIn && !this.bookmark" dark class="cyan" @click="setAsBookmark">Set As Bookmark</v-btn>
+
+                <v-btn v-if="isUserLoggedIn && this.bookmark" dark class="cyan" @click="unsetAsBookmark">Unset As Bookmark</v-btn>
             </v-flex>
 
             <v-flex xs6>
@@ -27,8 +31,66 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import BookmarksServices from "/Users/zaidsaeed/Desktop/tab-tracker/server/src/services/BookmarksService.js";
 export default {
-  props: ["song"]
+  props: ["song"],
+  data() {
+    return {
+      bookmark: null
+    };
+  },
+  computed: {
+    ...mapState(["isUserLoggedIn"])
+  },
+  watch: {
+    async song() {
+      if (!this.isUserLoggedIn) {
+        return;
+      }
+      try {
+        this.bookmark = (await BookmarksServices.index({
+          songId: this.song.id,
+          userId: this.$store.state.user.id
+        })).data;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  },
+  async mounted() {
+    if (!this.isUserLoggedIn) {
+      return;
+    }
+    try {
+      this.bookmark = (await BookmarksServices.index({
+        songId: this.song.id,
+        userId: this.$store.state.user.id
+      })).data;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  methods: {
+    async setAsBookmark() {
+      try {
+        this.bookmark = (await BookmarksServices.post({
+          songId: this.song.id,
+          userId: this.$store.state.user.id
+        })).data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async unsetAsBookmark() {
+      try {
+        await BookmarksServices.delete(this.bookmark.id);
+        this.bookmark = null;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }
 };
 </script>
 

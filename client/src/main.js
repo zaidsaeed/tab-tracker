@@ -9,7 +9,6 @@ import { sync } from "vuex-router-sync";
 import store from "./store/store";
 import VueYouTubeEmbed from "vue-youtube-embed";
 import Panel from "/Users/zaidsaeed/Desktop/tab-tracker/client/src/components/global/Panel.vue";
-
 Vue.config.productionTip = false;
 
 Vue.use(Vuetify);
