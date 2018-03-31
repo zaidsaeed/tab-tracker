@@ -1,14 +1,23 @@
 const {
-  Bookmark
+  Bookmark,
+  Song
 } = require('/Users/zaidsaeed/Desktop/tab-tracker/server/src/models')
-
+const _ = require('lodash')
 module.exports = {
   async index (req, res) {
     try {
       const { songId, userId } = req.query
-      const bookmark = await Bookmark.findOne({
-        where: { songId: songId, userId: userId }
+      console.log('req', req)
+      const where = { userId: userId }
+      if (songId) {
+        where.SongId = songId
+      }
+      const bookmark = await Bookmark.findAll({
+        where: where,
+        include: [{ model: Song }]
       })
+        .map(bookmark => bookmark.toJSON())
+        .map(bookmark => _.extend({}, bookmark.Song, bookmark))
       res.send(bookmark)
     } catch (err) {
       res
@@ -22,6 +31,7 @@ module.exports = {
       const bookmark = await Bookmark.findOne({
         where: { SongId: songId, UserId: userId }
       })
+      console.log('bookmark', bookmark)
       if (bookmark) {
         return res.status(400).send({
           error: 'you already have this set as a bookmark'
@@ -33,6 +43,7 @@ module.exports = {
       })
       res.send(newBookmark)
     } catch (err) {
+      console.log(err)
       res
         .status(500)
         .send({ error: 'An error has occurred trying to create the bookmark' })
