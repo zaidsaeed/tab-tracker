@@ -2,6 +2,7 @@ const AuthenticationController = require('./controllers/AuthenticationController
 const AuthenticationControllerPolicy = require('/Users/zaidsaeed/Desktop/tab-tracker/server/src/policies/AuthenticationControllerPolicy.js')
 const SongsController = require('/Users/zaidsaeed/Desktop/tab-tracker/server/src/controllers/SongsController.js')
 const BookmarksController = require('/Users/zaidsaeed/Desktop/tab-tracker/server/src/controllers/BookmarksController.js')
+const SongsHistoryController = require('/Users/zaidsaeed/Desktop/tab-tracker/server/src/controllers/SongsHistoryController.js')
 var cors = require('cors')
 
 module.exports = app => {
@@ -28,4 +29,6 @@ module.exports = app => {
   app.post('/bookmarks', BookmarksController.post)
 
   app.delete('/bookmarks/:bookmarkId', BookmarksController.delete)
+
+  app.post('/history', SongsHistoryController.post)
 }

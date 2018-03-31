@@ -2,6 +2,7 @@
     <v-layout>
         <v-flex xs6>
             <songs-bookmarks />
+            <recently-viewed-songs class="mt-2"/>
         </v-flex>
         <v-flex xs6 class="ml-2">
             <songs-search-panel class="mb-2"/>
@@ -15,8 +16,10 @@ import SongsPanel from "./SongsPanel";
 import SongsService from "/Users/zaidsaeed/Desktop/tab-tracker/server/src/services/SongsService.js";
 import SongsSearchPanel from "./SongsSearchPanel";
 import SongsBookmarks from "./SongsBookmarks";
+import RecentlyViewedSongs from "./RecentlyViewedSongs";
 export default {
   components: {
+    RecentlyViewedSongs,
     SongsPanel,
     SongsSearchPanel,
     SongsBookmarks

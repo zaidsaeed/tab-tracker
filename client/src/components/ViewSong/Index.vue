@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import SongHistoryService from "/Users/zaidsaeed/Desktop/tab-tracker/server/src/services/SongHistoryService.js";
 import SongsService from "/Users/zaidsaeed/Desktop/tab-tracker/server/src/services/SongsService.js";
 import SongMetadata from "./SongMetadata.vue";
 import YouTube from "./YouTube.vue";
@@ -35,9 +37,13 @@ export default {
       song: {}
     };
   },
+  computed: {
+    ...mapState(["user"])
+  },
   async mounted() {
     const songId = this.$store.state.route.params.songId;
     this.song = (await SongsService.show(songId)).data;
+    SongHistoryService.post({ userId: this.user.id, songId: this.song.id });
   },
   components: {
     SongMetadata,
