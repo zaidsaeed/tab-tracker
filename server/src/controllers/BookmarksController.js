@@ -7,7 +7,6 @@ module.exports = {
   async index (req, res) {
     try {
       const { songId, userId } = req.query
-      console.log('req', req)
       const where = { userId: userId }
       if (songId) {
         where.SongId = songId
@@ -31,7 +30,6 @@ module.exports = {
       const bookmark = await Bookmark.findOne({
         where: { SongId: songId, UserId: userId }
       })
-      console.log('bookmark', bookmark)
       if (bookmark) {
         return res.status(400).send({
           error: 'you already have this set as a bookmark'

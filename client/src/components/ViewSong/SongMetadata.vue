@@ -53,7 +53,6 @@ export default {
           songId: this.song.id,
           userId: this.user.id
         })).data;
-        console.log("bookmarks", bookmarks);
         if (bookmarks.length) {
           this.bookmark = bookmarks[0];
         } else {

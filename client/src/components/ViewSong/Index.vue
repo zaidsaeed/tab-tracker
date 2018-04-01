@@ -38,12 +38,14 @@ export default {
     };
   },
   computed: {
-    ...mapState(["user"])
+    ...mapState(["user", "isUserLoggedIn", "route"])
   },
   async mounted() {
-    const songId = this.$store.state.route.params.songId;
+    const songId = this.route.params.songId;
     this.song = (await SongsService.show(songId)).data;
-    SongHistoryService.post({ userId: this.user.id, songId: this.song.id });
+    if (this.isUserLoggedIn) {
+      SongHistoryService.post({ userId: this.user.id, songId: songId });
+    }
   },
   components: {
     SongMetadata,

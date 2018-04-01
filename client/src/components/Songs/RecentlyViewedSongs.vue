@@ -3,7 +3,7 @@
         <v-data-table
         :headers="headers"
         :pagination.sync="pagination"
-        :items="songs">
+        :items="histories">
             <template slot="items" scope="props">
                 <td class="text-xs-right">
                     {{props.item.title}}
@@ -27,7 +27,7 @@ export default {
         { text: "Artist", value: "artist" }
       ],
       pagination: { sortBy: "date", descending: true },
-      songs: []
+      histories: []
     };
   },
   computed: {
@@ -35,8 +35,8 @@ export default {
   },
   async mounted() {
     if (this.isUserLoggedIn) {
-      this.songs = (await SongHistoryService.index({
-        userId: this.$store.state.user.id
+      this.histories = (await SongHistoryService.index({
+        userId: this.user.id
       })).data;
     }
   }
