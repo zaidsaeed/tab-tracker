@@ -1,7 +1,7 @@
 <template>
     <panel title="Songs" class="mr-10">
-        <v-btn slot="action" class="cyan accent-2" small absolute right middle fab :to="{name: 'songs-create'}">
-            <v-icon>add</v-icon>
+        <v-btn slot="action" class="cyan" small absolute right middle fab :to="{name: 'songs-create'}">
+            <v-icon>add_circle</v-icon>
         </v-btn>
         <div v-for="song in songs" :key="song.id" class="song">
             <v-layout>
