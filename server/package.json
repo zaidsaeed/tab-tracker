@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":
-      "./node_modules/nodemon/bin/nodemon.js src/app.js --exec 'npm run lint && node'",
+    "start": "./node_modules/nodemon/bin/nodemon.js src/app.js --exec 'npm run lint && node'",
     "lint": "./node_modules/.bin/eslint **/*.js",
     "seed": "node ./seed"
   },
@@ -22,6 +21,8 @@
     "joi": "^13.1.2",
     "jsonwebtoken": "^8.0.0",
     "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.0",
     "sequelize": "^4.8.0",
     "sqlite3": "^3.1.8"
   },

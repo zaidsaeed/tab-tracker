@@ -2,7 +2,8 @@ const AuthenticationController = require('./controllers/AuthenticationController
 const AuthenticationControllerPolicy = require('/Users/zaidsaeed/Desktop/tab-tracker/server/src/policies/AuthenticationControllerPolicy.js')
 const SongsController = require('/Users/zaidsaeed/Desktop/tab-tracker/server/src/controllers/SongsController.js')
 const BookmarksController = require('/Users/zaidsaeed/Desktop/tab-tracker/server/src/controllers/BookmarksController.js')
-const HistorysController = require('/Users/zaidsaeed/Desktop/tab-tracker/server/src/controllers/HistorysController.js')
+const HistoriesController = require('/Users/zaidsaeed/Desktop/tab-tracker/server/src/controllers/HistoriesController.js')
+const isAuthenticated = require('/Users/zaidsaeed/Desktop/tab-tracker/server/src/policies/isAuthenticated.js')
 var cors = require('cors')
 
 module.exports = app => {
@@ -24,13 +25,17 @@ module.exports = app => {
 
   app.post('/songs', SongsController.post)
 
-  app.get('/bookmarks', BookmarksController.index)
+  app.get('/bookmarks', isAuthenticated, BookmarksController.index)
 
-  app.post('/bookmarks', BookmarksController.post)
+  app.post('/bookmarks', isAuthenticated, BookmarksController.post)
 
-  app.delete('/bookmarks/:bookmarkId', BookmarksController.delete)
+  app.delete(
+    '/bookmarks/:bookmarkId',
+    isAuthenticated,
+    BookmarksController.delete
+  )
 
-  app.get('/histories', HistorysController.index)
+  app.get('/histories', isAuthenticated, HistoriesController.index)
 
-  app.post('/histories', HistorysController.post)
+  app.post('/histories', isAuthenticated, HistoriesController.post)
 }

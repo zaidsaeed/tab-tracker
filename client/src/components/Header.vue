@@ -33,7 +33,6 @@ export default {
     logOut() {
       this.$store.dispatch("setToken", null);
       this.$store.dispatch("setUser", null);
-      this.$router.push({ name: "login" });
     }
   }
 };

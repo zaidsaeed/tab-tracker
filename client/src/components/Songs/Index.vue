@@ -1,10 +1,10 @@
 <template>
     <v-layout>
-        <v-flex xs6>
+        <v-flex xs6 v-if="isUserLoggedIn">
             <songs-bookmarks />
-            <recently-viewed-songs class="mt-2"/>
+            <recently-viewed-songs class="mt-2" />
         </v-flex>
-        <v-flex xs6 class="ml-2">
+        <v-flex xs6 class="ml-2" :class="{xs12: !isUserLoggedIn, xs6:isUserLoggedIn}">
             <songs-search-panel class="mb-2"/>
             <songs-panel/>
         </v-flex>
@@ -17,6 +17,7 @@ import SongsService from "/Users/zaidsaeed/Desktop/tab-tracker/server/src/servic
 import SongsSearchPanel from "./SongsSearchPanel";
 import SongsBookmarks from "./SongsBookmarks";
 import RecentlyViewedSongs from "./RecentlyViewedSongs";
+import { mapState } from "vuex";
 export default {
   components: {
     RecentlyViewedSongs,
@@ -28,6 +29,9 @@ export default {
     return {
       songs: null
     };
+  },
+  computed: {
+    ...mapState(["isUserLoggedIn"])
   },
   async mounted() {
     this.songs = (await SongsService.index()).data;

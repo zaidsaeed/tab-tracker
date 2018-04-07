@@ -26,7 +26,7 @@ export default {
         { text: "Title", value: "title" },
         { text: "Artist", value: "artist" }
       ],
-      pagination: { sortBy: "date", descending: true },
+      pagination: { sortBy: "createdAt", descending: true },
       histories: []
     };
   },

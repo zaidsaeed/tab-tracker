@@ -35,9 +35,7 @@ export default {
   },
   async mounted() {
     if (this.isUserLoggedIn) {
-      this.bookmarks = (await BookmarksService.index({
-        userId: this.$store.state.user.id
-      })).data;
+      this.bookmarks = (await BookmarksService.index()).data;
     }
   }
 };
