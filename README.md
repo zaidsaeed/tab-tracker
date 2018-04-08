@@ -7,6 +7,7 @@ TabTracker is web app that: </br>
     * vuex to manage the state of the entire application </br>
     * vuex-persisted-state to ensure that application state does not reset upon the refresh of a web-page </br>
     * uses Google Material Design icons to create a more professional looking user-interface</br>
+    * uses loadash's debounce method to hold off user entering when creating a search query</br>
     
     Back End: </br>
     * uses sqlite3 database </br>
