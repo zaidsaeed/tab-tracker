@@ -12,5 +12,11 @@ PokeDashboard is web app that: </br>
 Login Page View:
 <img src='./login.png'/>
 
-Pokemon Modal View:
-<img src='./modal.png'/>
+Home Page View:
+<img src='./homeView.png'/>
+
+View Song View:
+<img src='./viewSong.png'/>
+
+Edit Song View:
+<img src='./editSong.png'/>
